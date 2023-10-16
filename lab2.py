@@ -34,7 +34,7 @@ def save_reviews(movie_id, review_type, num_reviews, agentIndex):
             if response.status_code != 200:
                 print(response.text)
             
-            while 'captcha' in response.url:
+            while 'captcha' in response.url and agentIndex < user_agents.count():
                 agentIndex += 1
                 response = scraper.get(url, headers={"User-Agent":user_agents[agentIndex]})
                 input()
